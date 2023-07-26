@@ -1,139 +1,75 @@
 fun main() {
 
-    /*
-    val = imutável
-    var = mutável
-     */
+    var msg: String = ""
 
-    var contaMatheus = Conta(titular = "Matheus", agencia = 100, conta = 1000)
-    contaMatheus.depositar(100.0)
+    val funcionarioMatheus = Funcionario(
+        nome = "Matheus",
+        cpf = "415.372.328-27",
+        salario = 1000.0,
+    )
 
-    var contaAlice = Conta("Alice", 200, 2000)
-    contaAlice.depositar(200.0)
+    val gerenteMauricio = Gerente(
+        nome = "Maurício",
+        cpf = "222.222.222-22",
+        salario = 2000.0,
+        senha = "gerente"
+    )
+
+    val diretorCamila = Diretor(
+        nome = "Camila",
+        cpf = "333.333.333-33",
+        salario = 4000.0,
+        senha = "diretor",
+        plr = 200.0
+    )
 
     println(
         """
-        Número da agência: ${contaMatheus.agencia} | Conta: ${contaMatheus.conta}
-        Titular: ${contaMatheus.titular}
-        -----------------------------------
-        Saldo: ${contaMatheus.saldo}
+       Nome do funcionário: ${funcionarioMatheus.nome} | CPF: ${funcionarioMatheus.cpf}
+       -----------------------------------------------------
+       Salário: ${funcionarioMatheus.salario}
+       
+       Salário com bonificação: ${funcionarioMatheus.bonificacao()}
     """
     )
 
-    println()
-
-    println(
-        """
-        Número da agência: ${contaAlice.agencia} | Conta: ${contaAlice.conta}
-        Titular: ${contaAlice.titular}
-        -----------------------------------
-        Saldo: ${contaAlice.saldo}
-    """
-    )
-
-    println()
-    contaMatheus.depositar(200.0)
-    println()
-    contaMatheus.sacar(200.0)
-    println()
-    contaMatheus.sacar(200.0)
-    println()
-    if (contaAlice.transferir(50.0, contaMatheus)) {
-        println("Transferência feita com sucesso para a conta de destino!")
-        println("Seu novo saldo: ${contaAlice.saldo}")
-        println("Novo saldo do Matheus: ${contaMatheus.saldo}")
+    if (gerenteMauricio.autenticar("gerente")) {
+        msg = "Sim"
     } else {
-        println("Erro ao fazer transferência!")
+        msg = "Não"
     }
 
+    println(
+        """
+       Nome do gerente: ${gerenteMauricio.nome} | CPF: ${gerenteMauricio.cpf}
+       -----------------------------------------------------
+       Salário: ${gerenteMauricio.salario}
+       
+       Salário com bonificação: ${gerenteMauricio.bonificacao()}
+       
+       Gerente autenticado? $msg
+    """
+    )
 
-//    testaLacos()
-//    testaCondicoes(saldo)
+    if (diretorCamila.autenticar("diretora")) {
+        msg = "Sim"
+    } else {
+        msg = "Não"
+    }
+
+    println(
+        """
+       Nome do diretor: ${diretorCamila.nome} | CPF: ${diretorCamila.cpf}
+       -----------------------------------------------------
+       Salário: ${diretorCamila.salario}
+       
+       PLR: ${diretorCamila.plr}
+       
+       Salário com bonificação: ${diretorCamila.bonificacao()}
+       
+       Gerente autenticado? $msg
+    """
+    )
 }
 
-class Conta(var titular: String, val agencia: Int, val conta: Int) {
-    var saldo: Double = 0.0
-        private set
 
-//    constructor(titular: String, agencia: Int, conta: Int){
-//        this.titular = titular
-//        this.agencia = agencia
-//        this.conta = conta
-//    }
-
-    fun depositar(valor: Double) {
-        println("--------DEPOSITO--------")
-        if (valor > 0) {
-            this.saldo += valor
-        }
-        println("$valor adicionado na conta: ${this.titular}")
-        println("Novo saldo: ${this.saldo}")
-    }
-
-    fun sacar(valor: Double) {
-        println("--------SAQUE--------")
-        if (this.saldo >= valor) {
-            saldo -= valor
-            println("Saque feito! Novo saldo: ${this.saldo}")
-        } else {
-            println("Saldo insuficiente. Saldo atual: ${this.saldo}")
-        }
-    }
-
-    fun transferir(valor: Double, contaDestino: Conta): Boolean {
-        println("--------TRANSFERÊNCIA--------")
-        if (saldo >= valor) {
-            saldo -= valor
-            contaDestino.depositar(valor)
-            return true
-        }
-        return false
-    }
-
-//    fun getSaldo(): Double {
-//        return saldo
-//    }
-//
-//    fun setSaldo(valor: Double) {
-//        if (valor > 0) {
-//            saldo = valor
-//        }
-//    }
-}
-
-//fun testaLacos(){
-//    var i = 1
-//    while(i <= 5){
-//        var titular = "$i º titular"
-//        var saldo = i * 100
-//        var numeroConta = i * 1000
-//        var agencia = i * 10
-//
-//        println("""
-//        Número da agência: $agencia | Conta: $numeroConta
-//        Titular: $titular
-//        -----------------------------------
-//        Saldo: $saldo
-//        """)
-//
-//        i++
-//    }
-//}
-//
-//fun testaCondicoes(saldo: Double) {
-//    if (saldo > 0.0) {
-//        println("Sua conta está no positivo")
-//    } else if (saldo == 0.0) {
-//        println("Sua conta está zerada")
-//    } else {
-//        println("Sua conta está no negativo")
-//    }
-//
-//    /*
-//    when{
-//        saldo > 0.0 -> println("Sua conta está no positivo")
-//        saldo == 0.0 -> println("Sua conta está zerada")
-//        else -> println("Sua conta está no negativo")
-//    }
-//     */
-//}
