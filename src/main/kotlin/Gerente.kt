@@ -1,3 +1,5 @@
+import kotlin.math.round
+
 class Gerente(
     nome: String,
     cpf: String,
@@ -10,7 +12,7 @@ class Gerente(
 ) {
 
     override fun bonificacao(): Double {
-        return super.bonificacao()
+        return super.bonificacao() + round(salario/3)
     }
 
     fun autenticar(senha: String): Boolean {

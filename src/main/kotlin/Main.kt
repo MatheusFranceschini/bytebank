@@ -23,13 +23,20 @@ fun main() {
         plr = 200.0
     )
 
+    val analistaMarina = Analista(
+        nome = "Marina",
+        cpf = "444.444.444-44",
+        salario = 2600.0,
+        bonus = 250.0
+    )
+
     println(
         """
        Nome do funcionário: ${funcionarioMatheus.nome} | CPF: ${funcionarioMatheus.cpf}
        -----------------------------------------------------
        Salário: ${funcionarioMatheus.salario}
        
-       Salário com bonificação: ${funcionarioMatheus.bonificacao()}
+       Bonificação: ${funcionarioMatheus.bonificacao()}
     """
     )
 
@@ -45,7 +52,7 @@ fun main() {
        -----------------------------------------------------
        Salário: ${gerenteMauricio.salario}
        
-       Salário com bonificação: ${gerenteMauricio.bonificacao()}
+       Bonificação: ${gerenteMauricio.bonificacao()}
        
        Gerente autenticado? $msg
     """
@@ -65,11 +72,29 @@ fun main() {
        
        PLR: ${diretorCamila.plr}
        
-       Salário com bonificação: ${diretorCamila.bonificacao()}
+       Bonificação: ${diretorCamila.bonificacao()}
        
        Gerente autenticado? $msg
     """
     )
+
+    println(
+        """
+       Nome do analista: ${analistaMarina.nome} | CPF: ${analistaMarina.cpf}
+       -----------------------------------------------------
+       Salário: ${analistaMarina.salario}
+       
+       Bonificação: ${analistaMarina.bonificacao()}
+    """
+    )
+
+    val calculadora = CalculaBonificacao()
+    calculadora.calcular(funcionarioMatheus)
+    calculadora.calcular(gerenteMauricio)
+    calculadora.calcular(diretorCamila)
+    calculadora.calcular(analistaMarina)
+
+    println("\nTotal de bonificação: ${calculadora.total}")
 }
 
 
