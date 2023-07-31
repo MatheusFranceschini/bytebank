@@ -4,22 +4,15 @@ class Gerente(
     nome: String,
     cpf: String,
     salario: Double,
-    val senha: String
-) : Funcionario(
+    senha: String
+) : FuncionarioAdmin(
     nome = nome,
     cpf = cpf,
-    salario = salario
-) {
+    salario = salario,
+    senha = senha
+), Autenticavel {
 
     override fun bonificacao(): Double {
-        return super.bonificacao() + round(salario/3)
-    }
-
-    fun autenticar(senha: String): Boolean {
-        if (this.senha == senha) {
-            return true
-        } else {
-            return false
-        }
+        return round(salario/3)
     }
 }

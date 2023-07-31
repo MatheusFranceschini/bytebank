@@ -1,6 +1,10 @@
-class Conta(var titular: String, val agencia: Int, val conta: Int) {
+abstract class Conta(
+    var titular: String,
+    val agencia: Int,
+    val conta: Int
+) {
     var saldo: Double = 0.0
-        private set
+        protected set
 
 //    constructor(titular: String, agencia: Int, conta: Int){
 //        this.titular = titular
@@ -17,15 +21,7 @@ class Conta(var titular: String, val agencia: Int, val conta: Int) {
         println("Novo saldo: ${this.saldo}")
     }
 
-    fun sacar(valor: Double) {
-        println("--------SAQUE--------")
-        if (this.saldo >= valor) {
-            saldo -= valor
-            println("Saque feito! Novo saldo: ${this.saldo}")
-        } else {
-            println("Saldo insuficiente. Saldo atual: ${this.saldo}")
-        }
-    }
+    abstract fun sacar(valor: Double)
 
     fun transferir(valor: Double, contaDestino: Conta): Boolean {
         println("--------TRANSFERÊNCIA--------")

@@ -1,10 +1,10 @@
-open class Funcionario(
+abstract class Funcionario(
     val nome: String,
     val cpf: String,
     val salario: Double,
 ) {
-    open fun bonificacao(): Double {
-        return salario * 0.1
-    }
+
+    //Abstrair membros obriga que todas as classes(antigas e novas) sejam obrigadas a ter a implementação própria
+    abstract fun bonificacao(): Double
 }
 

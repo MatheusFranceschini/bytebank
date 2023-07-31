@@ -1,8 +1,8 @@
 fun testaComportamentosConta() {
-    var contaMatheus = Conta(titular = "Matheus", agencia = 100, conta = 1000)
+    var contaMatheus = ContaCorrente(titular = "Matheus", agencia = 100, conta = 1000)
     contaMatheus.depositar(100.0)
 
-    var contaAlice = Conta("Alice", 200, 2000)
+    var contaAlice = ContaPoupanca("Alice", 200, 2000)
     contaAlice.depositar(200.0)
 
     println(
