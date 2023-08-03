@@ -8,6 +8,7 @@
 package main.kotlin.br.com.alura.bytebank.tests
 
 import main.kotlin.br.com.alura.bytebank.models.Cliente
+import main.kotlin.br.com.alura.bytebank.models.Endereco
 
 fun testaAlias() {
     val stringKotlin: String = "Kotlin"
@@ -25,7 +26,7 @@ fun testaAlias() {
     val clientePadrao = Cliente(
         nome = "Matheus",
         cpf = "111.111.111-11",
-        senha = "teste"
+        senha = "teste",
     )
 
     val clienteAlias = main.kotlin.br.com.alura.bytebank.tests.alias.Cliente(nome = "Carlos")
