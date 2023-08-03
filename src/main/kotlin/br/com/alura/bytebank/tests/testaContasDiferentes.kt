@@ -3,13 +3,19 @@ package main.kotlin.br.com.alura.bytebank.tests
 import main.kotlin.br.com.alura.bytebank.models.Cliente
 import main.kotlin.br.com.alura.bytebank.models.ContaCorrente
 import main.kotlin.br.com.alura.bytebank.models.ContaPoupanca
+import main.kotlin.br.com.alura.bytebank.models.Endereco
 
 fun testaContasDiferentes() {
     val contaCorrente = ContaCorrente(
         titular = Cliente(
             nome = "Matheus",
             cpf = "111.111.111-11",
-            senha = "senha"
+            senha = "senha",
+            endereco = Endereco(
+                logradouro = "Rua Viçosa do Ceará",
+                numero = 44,
+                complemento = "Apto 13"
+            )
         ),
         agencia = 1000,
         conta = 1000
@@ -45,4 +51,8 @@ fun testaContasDiferentes() {
     println("CPF: ${contaCorrente.titular.cpf}")
     println("Agencia: ${contaCorrente.agencia}")
     println("Conta: ${contaCorrente.conta}")
+    println(
+        "Endereço: ${contaCorrente.titular.endereco.logradouro}, ${contaCorrente.titular.endereco.numero}, " +
+                "${contaCorrente.titular.endereco.complemento}"
+    )
 }
