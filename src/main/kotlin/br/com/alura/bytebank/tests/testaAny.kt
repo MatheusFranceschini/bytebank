@@ -1,4 +1,4 @@
-package main.kotlin.br.com.alura.bytebank.tests.alias
+package main.kotlin.br.com.alura.bytebank.tests
 
 import main.kotlin.br.com.alura.bytebank.tests.testaFuncionario
 
