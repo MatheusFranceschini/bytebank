@@ -1,3 +1,1 @@
 # bytebank
-
-teste
