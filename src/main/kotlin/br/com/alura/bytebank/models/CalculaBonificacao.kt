@@ -4,8 +4,13 @@ class CalculaBonificacao {
 
     var total: Double = 0.0
 
-    fun calcular(funcionario: Funcionario){
-        this.total += funcionario.bonificacao()
+    fun calcular(funcionario: Any){
+        //Ao utilizar o Any, perdemos a possibilidade de utilizar as propriedades da classe
+        //Para resolver isso utilizamos o Casting (as)
+        //Continua na testaFuncionario
+        if(funcionario is Funcionario){
+            this.total += funcionario.bonificacao()
+        }
     }
 
 

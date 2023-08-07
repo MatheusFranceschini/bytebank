@@ -100,6 +100,10 @@ fun testaFuncionario() {
     calculadora.calcular(gerenteMauricio)
     calculadora.calcular(diretorCamila)
     calculadora.calcular(analistaMarina)
+    //Porém, com o Any nós podemos enviar qualquer tipo de valor para a função.
+    //Isso faz com que o teste resulte em um problema de exception. É possível resolver
+    //com um If
+    calculadora.calcular(1)
 
     println("\nTotal de bonificação: ${calculadora.total}")
 }
