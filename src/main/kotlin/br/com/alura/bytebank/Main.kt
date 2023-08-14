@@ -6,15 +6,26 @@ fun main() {
     println("Fim do programa")
 }
 
-fun funcao1(){
+fun funcao1() {
     println("Início da função 1")
-    funcao2()
+    try {
+        10 / 0
+    } catch (e: ArithmeticException) {
+        print("Arithmetic Expression")
+    }
+    println()
+    try {
+        funcao2()
+    } catch (e: ClassCastException) {
+        println("Class Cast Exception")
+    }
+
     println("Fim da função 1")
 }
 
-fun funcao2(){
+fun funcao2() {
     println("Início da função 2")
-    for(i in 1..5){
+    for (i in 1..5) {
         println(i)
         val endereco = Any()
         endereco as Endereco
