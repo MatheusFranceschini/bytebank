@@ -1,22 +1,17 @@
+import main.kotlin.br.com.alura.bytebank.exceptions.SaldoInsuficienteException
 import main.kotlin.br.com.alura.bytebank.models.Endereco
+import main.kotlin.br.com.alura.bytebank.tests.testaComportamentosConta
 
 fun main() {
-    println("Início do programa")
-    funcao1()
-    println("Fim do programa")
+    testaComportamentosConta()
 }
 
 fun funcao1() {
     println("Início da função 1")
     try {
-        10 / 0
-    } catch (e: ArithmeticException) {
-        print("Arithmetic Expression")
-    }
-    println()
-    try {
         funcao2()
     } catch (e: ClassCastException) {
+        e.printStackTrace()
         println("Class Cast Exception")
     }
 
@@ -27,8 +22,7 @@ fun funcao2() {
     println("Início da função 2")
     for (i in 1..5) {
         println(i)
-        val endereco = Any()
-        endereco as Endereco
+        throw SaldoInsuficienteException()
     }
     println("Fim da função 2")
 }

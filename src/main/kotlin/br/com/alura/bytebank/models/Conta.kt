@@ -1,5 +1,7 @@
 package main.kotlin.br.com.alura.bytebank.models
 
+import main.kotlin.br.com.alura.bytebank.exceptions.SaldoInsuficienteException
+
 //Variaveis globais são criadas fora do escopo
 //var totalContas:Int = 0
 //    private set
@@ -36,14 +38,13 @@ abstract class Conta(
 
     abstract fun sacar(valor: Double)
 
-    fun transferir(valor: Double, contaDestino: Conta): Boolean {
-        println("--------TRANSFERÊNCIA--------")
-        if (saldo >= valor) {
+    fun transferir(valor: Double, contaDestino: Conta) {
+        if(saldo < valor){
+            throw SaldoInsuficienteException()
+        }else{
             saldo -= valor
             contaDestino.depositar(valor)
-            return true
         }
-        return false
     }
 
 //    fun getSaldo(): Double {
